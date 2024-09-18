@@ -68,9 +68,6 @@ class Cycling extends Workout {
   }
 }
 
-// const run1 = new Running([39, -12], 5.2, 24, 178);
-// const cycling1 = new Cycling([39, -12], 5.2, 24, 178);
-// console.log(run1, cycling1);
 
 //aplication achitecture
 const form = document.querySelector('.form');
@@ -115,7 +112,6 @@ class App {
   _loadMap(position) {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    console.log(`https://google.com/maps/@${latitude},${longitude}`);
     const coords = [latitude, longitude];
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
     L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -277,7 +273,6 @@ class App {
   }
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
-    console.log(workoutEl);
     if (!workoutEl) return;
 
     const workout = this.#workouts.find(
@@ -312,59 +307,3 @@ class App {
 }
 
 const app = new App();
-
-// //check current location
-// navigator.geolocation.getCurrentPosition(
-//   function (position) {
-//     const { latitude } = position.coords;
-//     const { longitude } = position.coords;
-//     console.log(`https://google.com/maps/@${latitude},${longitude}`);
-//     const coords = [latitude, longitude];
-//     map = L.map('map').setView(coords, 12);
-
-//     L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-//       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-//     }).addTo(map);
-
-//     //handling clicks on map
-//     map.on('click', function (mapE) {
-//       mapEvent = mapE;
-//       form.classList.remove('hidden');
-//       inputDistance.focus();
-//     });
-//   },
-//   function () {
-//     alert('Could not get your position');
-//   }
-// );
-// form.addEventListener('submit', function (e) {
-//   //display marker
-//   e.preventDefault();
-//   //clear input fields
-//   inputDistance.value =
-//     inputCadence.value =
-//     inputDuration.value =
-//     inputElevation.value =
-//       '';
-//   console.log(mapEvent);
-//   const { lat, lng } = mapEvent.latlng;
-//   L.marker([lat, lng])
-//     .addTo(map)
-//     .bindPopup(
-//       L.popup({
-//         minWidth: 100,
-//         maxWidth: 250,
-//         autoClose: false,
-//         closeOnClick: false,
-//         className: 'running-popup',
-//       })
-//     )
-//     .setPopupContent('Workout')
-//     .openPopup();
-// });
-
-// //change form input
-// inputType.addEventListener('change', function () {
-//   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-//   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-// });
